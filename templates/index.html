@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ-бот · Репетиция хакатона</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <div class="bot-avatar">🎤</div>
+      <div class="app__title">
+        <h1>FAQ-бот репетиции</h1>
+        <p class="app__status"><span class="dot"></span>на связи</p>
+      </div>
+    </header>
+
+    <main class="chat" id="chat" aria-live="polite"></main>
+
+    <div class="suggestions" id="suggestions">
+      {% for q in questions %}
+      <button class="chip" data-question="{{ q }}">{{ q }}</button>
+      {% endfor %}
+    </div>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <input
+        id="input"
+        type="text"
+        placeholder="Спросите про время, команду, трек, сдачу или призы…"
+        aria-label="Сообщение"
+      />
+      <button type="submit" class="send-btn" aria-label="Отправить">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+          <path d="M4 12L20 4L14 20L11 13L4 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
